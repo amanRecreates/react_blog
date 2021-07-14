@@ -10,7 +10,7 @@ const Home = () => {
        setBlogs(newBlogs)
    }
 
-   const [name, setName] = useState('mario')
+   const [loading, setLoading] = useState(true)
    
    useEffect(() => {
         fetch('http://localhost:8000/blogs')
@@ -19,11 +19,13 @@ const Home = () => {
             })
             .then(data => {
                 setBlogs(data)
+                setLoading(false)
             })
    }, [])
    
     return (
         <div className="home">
+            { loading && <div> Loading ... </div>}
             { blogs && <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} /> }
         </div>
     );
