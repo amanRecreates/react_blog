@@ -6,13 +6,19 @@ const Create = () => {
     const [body, setBody] = useState('')
     const [author, setAuthor] = useState('yoshi')
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const blog = { title, body, author }
+        console.log(blog)
+    }
+
     return (
         <div className="create">
             <h2>Add a New Blog</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Blog Title: </label>
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
@@ -37,5 +43,5 @@ const Create = () => {
         </div>
     );
 }
- 
+
 export default Create;
